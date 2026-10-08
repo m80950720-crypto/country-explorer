@@ -1,0 +1,28 @@
+{
+  "name": "country-explorer",
+  "version": "1.0.0",
+  "description": "Search, filter, and explore countries around the world - built with Express, Tailwind CSS, and the REST Countries API.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/output.css --watch"
+  },
+  "keywords": [
+    "countries",
+    "express",
+    "tailwindcss",
+    "restcountries"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

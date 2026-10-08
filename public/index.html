@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Country Explorer</title>
+<meta name="description" content="Explore countries around the world — search, filter by region, and view detailed stats.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>">
+<script src="/js/theme-init.js"></script>
+<link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-300 flex flex-col">
+
+<!-- NAVBAR -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2 text-xl font-bold">
+      <span class="text-2xl">🌍</span> Country Explorer
+    </a>
+    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition" aria-label="Toggle dark mode">
+      <svg id="iconSun" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      <svg id="iconMoon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- HERO / SEARCH -->
+<section class="py-10 md:py-14 text-center px-4">
+  <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+    Explore the <span class="text-blue-600 dark:text-blue-400">World</span>
+  </h1>
+  <p class="mt-3 text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+    Search any country, filter by region, and dive into the details — population, capital, flag, and more.
+  </p>
+
+  <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center max-w-2xl mx-auto">
+    <input id="searchInput" type="text" placeholder="Search for a country..." class="input-field sm:w-80" autocomplete="off">
+    <select id="regionFilter" class="input-field sm:w-48">
+      <option value="">All Regions</option>
+      <option value="Africa">Africa</option>
+      <option value="Americas">Americas</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+      <option value="Antarctic">Antarctic</option>
+    </select>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+  <p id="resultCount" class="text-sm text-gray-500 dark:text-gray-400 mb-4"></p>
+
+  <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+  <div id="emptyState" class="hidden text-center py-20 text-gray-400">
+    <p class="text-5xl mb-4">🔎</p>
+    <p class="font-semibold">No countries found</p>
+    <p class="text-sm mt-1">Try a different search term or region.</p>
+  </div>
+
+  <div id="errorState" class="hidden text-center py-20">
+    <p class="text-5xl mb-4">⚠️</p>
+    <p class="font-semibold text-gray-700 dark:text-gray-300">Couldn't load countries</p>
+    <p class="text-sm mt-1 text-gray-400">Please check your connection and try again.</p>
+    <p id="errorReason" class="text-xs mt-2 text-gray-400 font-mono"></p>
+    <button id="retryBtn" class="btn-primary mt-5">Retry</button>
+  </div>
+</main>
+
+<footer class="border-t border-gray-200 dark:border-gray-800 py-8 text-center text-sm text-gray-400">
+  Data from <a href="https://restcountries.com" target="_blank" rel="noopener" class="underline hover:text-blue-500">restcountries.com</a> · Built with Express &amp; Tailwind CSS
+</footer>
+
+<script src="/js/theme-toggle.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
